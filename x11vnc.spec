@@ -1,6 +1,6 @@
-Name:		x11vnc
-Summary:	a VNC server for the current X11 session
+Summary:	A VNC server for the current X11 session
 Summary(pl):	Program serwuj±cy aktualn± sesjê X11 poprzez VNC
+Name:		x11vnc
 Version:	0.6.1
 Release:	1
 License:	GPL
@@ -12,16 +12,18 @@ BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-x11vnc is to Xwindows what WinVNC is to Windows, i.e. a server which
-serves the current Xwindows desktop via RFB (VNC) protocol to the
-user.
+x11vnc is to X Window System what WinVNC is to Windows, i.e. a server
+which serves the current X Window System desktop via RFB (VNC)
+protocol to the user.
+
 Based on the ideas of x0rfbserver and on LibVNCServer, it has evolved
 into a versatile and performant while still easy to use program.
 
 %description -l pl
-x11vnc jest tym czym czym jest WinVNC dla windows, czyli programem
-udostêpniaj±cym aktualny ekran Xwindow poprzez protokó³ RFB (VNC) dla
-u¿ytkownika.
+x11vnc jest dla X Window System tym, czym czym jest WinVNC dla
+Windows, czyli programem udostêpniaj±cym aktualny ekran X Window
+System poprzez protokó³ RFB (VNC) dla u¿ytkownika.
+
 Bazuje na pomysle x0rfbserver i LibVNCServer, zosta³ stworzony jako
 wszechstronny i wydajny, ale tak¿e ³atwy w u¿yciu.
 
@@ -35,6 +37,7 @@ wszechstronny i wydajny, ale tak¿e ³atwy w u¿yciu.
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
