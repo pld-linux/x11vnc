@@ -1,12 +1,12 @@
 Summary:	A VNC server for the current X11 session
 Summary(pl):	Program serwuj±cy aktualn± sesjê X11 poprzez VNC
 Name:		x11vnc
-Version:	0.6.1
-Release:	2
+Version:	0.6.2
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/libvncserver/%{name}-%{version}.tar.gz
-# Source0-md5:	b03ba2f34355a4e3c2e0420af2065703
+# Source0-md5:	e8d2e11332624dcf3eea992248dd8f68
 URL:		http://www.karlrunge.com/x11vnc/
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
