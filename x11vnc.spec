@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://dl.sourceforge.net/libvncserver/%{name}-%{version}.tar.gz
+# Source0-md5:	b03ba2f34355a4e3c2e0420af2065703
 BuildRequires:	XFree86-devel
 BuildRequires:	libjpeg-devel
 BuildRequires:	zlib-devel
