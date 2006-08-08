@@ -22,9 +22,9 @@ Based on the ideas of x0rfbserver and on LibVNCServer, it has evolved
 into a versatile and performant while still easy to use program.
 
 %description -l pl
-x11vnc jest dla X Window System tym, czym czym jest WinVNC dla
-Windows, czyli programem udostêpniaj±cym aktualny ekran X Window
-System poprzez protokó³ RFB (VNC) dla u¿ytkownika.
+x11vnc jest dla X Window System tym, czym jest WinVNC dla Windows,
+czyli programem udostêpniaj±cym aktualny ekran X Window System poprzez
+protokó³ RFB (VNC) dla u¿ytkownika.
 
 Bazuje na pomy¶le x0rfbserver i LibVNCServer, zosta³ stworzony jako
 wszechstronny i wydajny, ale tak¿e ³atwy w u¿yciu.
