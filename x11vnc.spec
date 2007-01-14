@@ -8,8 +8,18 @@ Group:		X11/Applications/Networking
 Source0:	http://www.karlrunge.com/x11vnc/%{name}-%{version}.tar.gz
 # Source0-md5:	ba5273a480f3c3ee2e676710f9d230b2
 URL:		http://www.karlrunge.com/x11vnc/
-BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	autoconf >= 2.59-9
+BuildRequires:	automake
 BuildRequires:	libjpeg-devel
+BuildRequires:	openssl-devel
+BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXTrap-devel
+BuildRequires:	xorg-lib-libXdamage-devel
+BuildRequires:	xorg-lib-libXext-devel
+BuildRequires:	xorg-lib-libXfixes-devel
+BuildRequires:	xorg-lib-libXinerama-devel
+BuildRequires:	xorg-lib-libXrandr-devel
+BuildRequires:	xorg-lib-libXtst-devel
 BuildRequires:	zlib-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
