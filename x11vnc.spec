@@ -1,5 +1,5 @@
 Summary:	A VNC server for the current X11 session
-Summary(pl):	Program serwuj±cy aktualn± sesjê X11 poprzez VNC
+Summary(pl.UTF-8):   Program serwujÄ…cy aktualnÄ… sesjÄ™ X11 poprzez VNC
 Name:		x11vnc
 Version:	0.8.4
 Release:	1
@@ -31,13 +31,13 @@ protocol to the user.
 Based on the ideas of x0rfbserver and on LibVNCServer, it has evolved
 into a versatile and performant while still easy to use program.
 
-%description -l pl
+%description -l pl.UTF-8
 x11vnc jest dla X Window System tym, czym jest WinVNC dla Windows,
-czyli programem udostêpniaj±cym aktualny ekran X Window System poprzez
-protokó³ RFB (VNC) dla u¿ytkownika.
+czyli programem udostÄ™pniajÄ…cym aktualny ekran X Window System poprzez
+protokÃ³Å‚ RFB (VNC) dla uÅ¼ytkownika.
 
-Bazuje na pomy¶le x0rfbserver i LibVNCServer, zosta³ stworzony jako
-wszechstronny i wydajny, ale tak¿e ³atwy w u¿yciu.
+Bazuje na pomyÅ›le x0rfbserver i LibVNCServer, zostaÅ‚ stworzony jako
+wszechstronny i wydajny, ale takÅ¼e Å‚atwy w uÅ¼yciu.
 
 %prep
 %setup -q
