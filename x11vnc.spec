@@ -1,5 +1,5 @@
 Summary:	A VNC server for the current X11 session
-Summary(pl.UTF-8):   Program serwujący aktualną sesję X11 poprzez VNC
+Summary(pl.UTF-8):	Program serwujący aktualną sesję X11 poprzez VNC
 Name:		x11vnc
 Version:	0.8.4
 Release:	1
