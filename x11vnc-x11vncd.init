@@ -1,0 +1,54 @@
+#!/bin/sh
+#
+# gdm:		Starts the VNC server
+#
+# Version:	@(#) /etc/rc.d/init.d/x11vncd 0.1
+#
+# chkconfig:	5 96 04
+# description:	Starts and stops the VNC server
+#
+# config:	/etc/sysconfig/x11vncd
+
+. /etc/rc.d/init.d/functions
+
+RETVAL=0
+# See how we were called.
+case "$1" in
+  start)
+	# Check if the service is already running?
+	if [ ! -f /var/lock/subsys/x11vncd ]; then
+		msg_starting "VNC Server"
+		daemon --fork /usr/sbin/x11vncd
+		RETVAL=$?
+		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/x11vncd
+	else
+		msg_already_running "VNC Server"
+	fi
+	;;
+  stop)
+	if [ -f /var/lock/subsys/x11vncd ]; then
+		msg_stopping "VNC Server"
+		killproc x11vncd
+		msg_stopping "x11vnc process"
+		killproc x11vnc
+		rm -f /var/lock/subsys/x11vncd
+	else
+		msg_not_running "VNC Server"
+	fi
+	;;
+  status)
+	status x11vncd
+	status x11vnc
+	exit $?
+	;;
+  restart|force-reload)
+	$0 stop
+	$0 start
+	exit $?
+	;;
+  *)
+	msg_usage "$0 {start|stop|restart|force-reload|status}"
+	exit 3
+esac
+
+exit $RETVAL

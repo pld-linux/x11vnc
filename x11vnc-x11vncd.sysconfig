@@ -1,0 +1,4 @@
+# Customized setings for x11vnc
+
+# Default options assume you use gdm
+X11VNC_OPTIONS="-passwdfile /etc/x11vncd_passwd -auth /var/lib/gdm/:0.Xauth -display :0 -noncache"
