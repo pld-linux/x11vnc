@@ -7,6 +7,10 @@ License:	GPL
 Group:		X11/Applications/Networking
 Source0:	http://www.karlrunge.com/x11vnc/%{name}-%{version}.tar.gz
 # Source0-md5:	868d2be5c8d4f116e89b8573db435889
+Source1:	%{name}-x11vncd
+Source2:	%{name}-x11vncd.init
+Source3:	%{name}-x11vncd.sysconfig
+Source4:	%{name}-x11vncd_passwd
 URL:		http://www.karlrunge.com/x11vnc/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
@@ -39,6 +43,18 @@ protokół RFB (VNC) dla użytkownika.
 Bazuje na pomyśle x0rfbserver i LibVNCServer, został stworzony jako
 wszechstronny i wydajny, ale także łatwy w użyciu.
 
+%package init
+Summary:	Init scripts for VNC server.
+Summary(pl.UTF-8):	Skrytpy startowe dla servera VNC.
+Group:		X11/Applications/Networking
+Requires:	x11vnc
+
+%description init
+Init scripts for VNC server.
+
+%description init -l pl.UTF-8
+Skrytpy startowe dla servera VNC.
+
 %prep
 %setup -q
 
@@ -58,8 +74,26 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
+install -d $RPM_BUILD_ROOT%{_sbindir} \
+	$RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig}
+
+cp %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/x11vncd
+cp %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/x11vncd
+cp %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/x11vncd
+cp %{SOURCE4} $RPM_BUILD_ROOT/etc/x11vncd_passwd
+
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post init
+/sbin/chkconfig --add x11vncd
+%service x11vncd restart "VNC Server"
+
+%preun init
+if [ "$1" = "0" ]; then
+	%service x11vncd stop
+	/sbin/chkconfig --del x11vncd
+fi
 
 %files
 %defattr(644,root,root,755)
@@ -67,3 +101,10 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/*
 %{_datadir}/%{name}
 %{_mandir}/man1/%{name}.1*
+
+%files init
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_sbindir}/x11vncd
+%attr(755,root,root) /etc/rc.d/init.d/x11vncd
+%config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/x11vncd
+%attr(600,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/x11vncd_passwd
