@@ -5,7 +5,7 @@ Version:	0.9.8
 Release:	2
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://x11vnc.sourceforge.net/dev/x11vnc-0.9.8.tar.gz
+Source0:	http://x11vnc.sourceforge.net/dev/%{name}-%{version}.tar.gz
 # Source0-md5:	52aba76e6e40c78005faa9f587317313
 Source1:	%{name}-x11vncd
 Source2:	%{name}-x11vncd.init
@@ -44,7 +44,7 @@ Bazuje na pomyśle x0rfbserver i LibVNCServer, został stworzony jako
 wszechstronny i wydajny, ale także łatwy w użyciu.
 
 %package init
-Summary:	Init scripts for VNC server.
+Summary:	Init scripts for VNC server
 Summary(pl.UTF-8):	Skrytpy startowe dla servera VNC.
 Group:		X11/Applications/Networking
 Requires:	x11vnc
@@ -106,6 +106,6 @@ fi
 %files init
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/x11vncd
-%attr(755,root,root) /etc/rc.d/init.d/x11vncd
+%attr(754,root,root) /etc/rc.d/init.d/x11vncd
 %config(noreplace) %verify(not md5 mtime size) /etc/sysconfig/x11vncd
 %attr(600,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/x11vncd_passwd
