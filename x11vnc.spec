@@ -17,7 +17,6 @@ BuildRequires:	automake
 BuildRequires:	libjpeg-devel
 BuildRequires:	openssl-devel
 BuildRequires:	xorg-lib-libX11-devel
-BuildRequires:	xorg-lib-libXTrap-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXfixes-devel
