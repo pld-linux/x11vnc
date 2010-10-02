@@ -1,12 +1,12 @@
 Summary:	A VNC server for the current X11 session
 Summary(pl.UTF-8):	Program serwujący aktualną sesję X11 poprzez VNC
 Name:		x11vnc
-Version:	0.9.9
-Release:	3
+Version:	0.9.12
+Release:	1
 License:	GPL
 Group:		X11/Applications/Networking
-Source0:	http://x11vnc.sourceforge.net/dev/%{name}-%{version}.tar.gz
-# Source0-md5:	874008821a0588a73ec7fbe09b747bb0
+Source0:	http://dl.sourceforge.net/libvncserver/%{name}/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	1498a68d02aa7b6c97bf746c073c8d00
 Source1:	%{name}-x11vncd
 Source2:	%{name}-x11vncd.init
 Source3:	%{name}-x11vncd.sysconfig
