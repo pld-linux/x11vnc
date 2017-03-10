@@ -1,14 +1,13 @@
 Summary:	A VNC server for the current X11 session
 Summary(pl.UTF-8):	Program serwujący aktualną sesję X11 poprzez VNC
 Name:		x11vnc
-Version:	0.9.13
+Version:	0.9.14
 Release:	1
 License:	GPL v2+
 Group:		X11/Applications/Networking
-# look for new releases at:
-#Source0:	https://github.com/LibVNC/x11vnc/archive/%{name}-%{version}.tar.gz
-Source0:	http://downloads.sourceforge.net/libvncserver/%{name}-%{version}.tar.gz
-# Source0-md5:	a372ec4fe8211221547b1c108cf56e4c
+#Source0Download: https://github.com/LibVNC/x11vnc/releases
+Source0:	https://github.com/LibVNC/x11vnc/archive/%{version}/%{name}-%{version}.tar.gz
+# Source0-md5:	994de25a538ec24049734b26355aa8d5
 Source1:	%{name}-x11vncd
 Source2:	%{name}-x11vncd.init
 Source3:	%{name}-x11vncd.sysconfig
@@ -16,16 +15,27 @@ Source4:	%{name}-x11vncd_passwd
 URL:		https://github.com/LibVNC/x11vnc/
 BuildRequires:	autoconf >= 2.59-9
 BuildRequires:	automake
+BuildRequires:	avahi-devel >= 0.6.4
+BuildRequires:	cairo-devel
 BuildRequires:	libjpeg-devel
+BuildRequires:	libvncserver-devel >= 0.9.8
 BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig
 BuildRequires:	xorg-lib-libX11-devel
+BuildRequires:	xorg-lib-libXcomposite-devel
+BuildRequires:	xorg-lib-libXcursor-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXext-devel
 BuildRequires:	xorg-lib-libXfixes-devel
+BuildRequires:	xorg-lib-libXi-devel >= 1.3
 BuildRequires:	xorg-lib-libXinerama-devel
 BuildRequires:	xorg-lib-libXrandr-devel
 BuildRequires:	xorg-lib-libXtst-devel
+BuildRequires:	xorg-proto-inputproto-devel >= 2
 BuildRequires:	zlib-devel
+Requires:	avahi-libs >= 0.6.4
+Requires:	libvncserver >= 0.9.8
+Requires:	xorg-lib-libXi >= 1.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -48,7 +58,7 @@ wszechstronny i wydajny, ale także łatwy w użyciu.
 Summary:	Init scripts for VNC server
 Summary(pl.UTF-8):	Skrytpy startowe dla servera VNC.
 Group:		X11/Applications/Networking
-Requires:	x11vnc
+Requires:	%{name} = %{version}-%{release}
 
 %description init
 Init scripts for VNC server.
@@ -78,10 +88,10 @@ rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sbindir} \
 	$RPM_BUILD_ROOT/etc/{rc.d/init.d,sysconfig}
 
-cp %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/x11vncd
-cp %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/x11vncd
-cp %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/x11vncd
-cp %{SOURCE4} $RPM_BUILD_ROOT/etc/x11vncd_passwd
+cp -p %{SOURCE1} $RPM_BUILD_ROOT%{_sbindir}/x11vncd
+cp -p %{SOURCE2} $RPM_BUILD_ROOT/etc/rc.d/init.d/x11vncd
+cp -p %{SOURCE3} $RPM_BUILD_ROOT/etc/sysconfig/x11vncd
+cp -p %{SOURCE4} $RPM_BUILD_ROOT/etc/x11vncd_passwd
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -98,11 +108,11 @@ fi
 
 %files
 %defattr(644,root,root,755)
-%doc README NEWS TODO ChangeLog AUTHORS
-%attr(755,root,root) %{_bindir}/*
-%{_datadir}/%{name}
-%{_desktopdir}/%{name}.desktop
-%{_mandir}/man1/%{name}.1*
+%doc ChangeLog NEWS README
+%attr(755,root,root) %{_bindir}/Xdummy
+%attr(755,root,root) %{_bindir}/x11vnc
+%{_desktopdir}/x11vnc.desktop
+%{_mandir}/man1/x11vnc.1*
 
 %files init
 %defattr(644,root,root,755)
