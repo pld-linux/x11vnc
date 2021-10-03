@@ -39,9 +39,6 @@ Requires:	libvncserver >= 0.9.8
 Requires:	xorg-lib-libXi >= 1.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-# Disable fixperms, chmod from coreutils 9.0 fails on symlinks
-%define		_fixperms	/bin/true
-
 %description
 x11vnc is to X Window System what WinVNC is to Windows, i.e. a server
 which serves the current X Window System desktop via RFB (VNC)
