@@ -2,7 +2,7 @@ Summary:	A VNC server for the current X11 session
 Summary(pl.UTF-8):	Program serwujący aktualną sesję X11 poprzez VNC
 Name:		x11vnc
 Version:	0.9.16
-Release:	2
+Release:	3
 License:	GPL v2+
 Group:		X11/Applications/Networking
 #Source0Download: https://github.com/LibVNC/x11vnc/releases
@@ -38,6 +38,9 @@ Requires:	avahi-libs >= 0.6.4
 Requires:	libvncserver >= 0.9.8
 Requires:	xorg-lib-libXi >= 1.3
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+# Disable fixperms, chmod from coreutils 9.0 fails on symlinks
+%define		_fixperms	/bin/true
 
 %description
 x11vnc is to X Window System what WinVNC is to Windows, i.e. a server
